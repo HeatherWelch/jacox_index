@@ -5,6 +5,6 @@ account: heatherwelch
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 338864
-bundleId: 1361104
+bundleId: 1369539
 url: https://heatherwelch.shinyapps.io/shiny_jacox/
-when: 1525731674.94419
+when: 1526070437.24856
