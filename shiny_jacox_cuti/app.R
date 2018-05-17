@@ -28,7 +28,7 @@ ui <- dashboardPage(skin = "black",
                     
    dashboardBody(
      fluidRow(
-             column(h5("Click a location to plot"),width=3,leafletOutput("map",height = 540)),
+             column(h5("Click a location to plot"),width=4,leafletOutput("map",height = 540)),
              column(h5("."),width = 8,plotOutput("CUTI",height = 540))#,
 #             column(h5(" "),width = 8,plotOutput("BEUTI"))
 )
@@ -55,12 +55,13 @@ server <- shinyServer(function(input, output) {
 #    })
   
   output$map <- renderLeaflet({
-    lmap <- leaflet(options = leafletOptions(zoomControl = FALSE,minZoom = 5,maxZoom = 5,dragging = FALSE))
+    lmap <- leaflet(options = leafletOptions(zoomControl = FALSE,minZoom = 5,maxZoom = 5,dragging = T))
+    #lmap <-leaflet()
     lmap <- addProviderTiles(lmap, "CartoDB.Positron",options = providerTileOptions(noWrap = TRUE))
     lmap <- addPolylines(lmap,data=boundaries,color="black",weight=1.5)
-    lmap <- addCircleMarkers(lmap,data=centroid,label = labelname,layerId=lable,radius = 1,color = "black",opacity = 1,fillColor = "black",fillOpacity=1,labelOptions = labelOptions(noHide = T,textOnly = T,textsize = 8,direction = "left",offset = c(-20,0)))
+    lmap <- addCircleMarkers(lmap,data=centroid,label = labelname,layerId=lable,radius = 1,color = "black",opacity = 1,fillColor = "black",fillOpacity=1,labelOptions = labelOptions(noHide = T,textOnly = T,textsize = 8,offset = c(-40,-10)))
     lmap <- setView(lmap,-122,39.3,zoom=5)
-    #lmap <- setMaxBounds(lmap,-134,29.5,-116,48)
+    #lmap <- setMaxBounds(lmap,-130,29.5,-116,48)
     })
   
 
